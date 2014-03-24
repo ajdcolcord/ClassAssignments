@@ -1,0 +1,77 @@
+import junit.framework.TestCase;
+
+/** represents the tests for the WebPages 
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public class WebPageTest extends TestCase {
+	
+	Item kevin = new Image("kevin", 400, "png");
+    Item annie = new Image("annie", 230, "jpeg");
+    Item jackie = new Image("jackie", 300, "png");
+    
+    Item text1 = new Text("This is Kevin");
+    Item text2 = new Text("This is Annie");
+    Item text3 = new Text("My friend Jackie");
+    
+  
+    
+    ILoItem listf = new ConsLoItem(jackie, new MtLoItem());
+    ILoItem listg = new ConsLoItem(text3, listf);
+    
+    
+    WebPage bobsfriends = new WebPage("bob-friends.org", "Bob's Friends", listg);
+    
+    Item link1 = new Link("Here are Bob's friends", bobsfriends);
+    
+    ILoItem lista = new ConsLoItem(link1, new MtLoItem());
+    ILoItem listb = new ConsLoItem(kevin, lista);
+    ILoItem listc = new ConsLoItem(text1, listb);
+    ILoItem listd = new ConsLoItem(annie, listc);
+    ILoItem liste = new ConsLoItem(text2, listd);
+    ILoItem listempty = new MtLoItem();
+    
+    WebPage myWP = new WebPage("myfriends.org", "My Friends", liste);
+    WebPage emptyWP = new WebPage("", "", listempty);
+    
+    
+    /** Tests for totalImageSize */
+    public void testTotalImageSize() {
+          assertEquals(this.bobsfriends.totalImageSize(), 300);
+          assertEquals(this.emptyWP.totalImageSize(), 0);
+          assertEquals(this.myWP.totalImageSize(), 930);
+    }
+    
+    //Tests for textLength()
+    boolean testTextLength(Tester t) {
+        return  t.checkExpect(this.kevin.textLength(), 8) &&
+                t.checkExpect(this.bobsfriends.textLength(), 38) &&
+                t.checkExpect(this.listempty.textLength(), 0) &&
+                t.checkExpect(this.link1.textLength(), 60) &&
+                t.checkExpect(this.myWP.textLength(), 113) &&
+                t.checkExpect(this.text1.textLength(), 13);
+        
+    }
+    //Tests for images()
+    boolean testImages(Tester t) {
+        return  t.checkExpect(this.bobsfriends.images(), "jackie.png") &&
+                t.checkExpect(this.listempty.images(), "") &&
+                t.checkExpect(this.link1.images(), "jackie.png") &&
+                t.checkExpect(this.myWP.images(),
+                        "annie.jpeg, kevin.png, jackie.png") &&
+                t.checkExpect(this.text1.images(), "");
+    }
+    
+    //Tests for isimage()
+    boolean testIsimage(Tester t) {
+        return  t.checkExpect(this.jackie.isimage(), true) &&
+                t.checkExpect(this.text1.isimage(), false) &&
+                t.checkExpect(this.myWP.isimage(), true) &&
+                t.checkExpect(this.link1.isimage(), false) &&
+                t.checkExpect(this.liste.isimage(), true) &&
+                t.checkExpect(this.lista.isimage(), false) &&
+                t.checkExpect(this.listempty.isimage(), false);
+    }
+    
+}

@@ -1,0 +1,47 @@
+/*
+TEMPLATE
+Fields:
+... this.filename...   - String
+... this.size...       - int
+... this.filetype...   - String
+
+Methods:
+...this.totalImageSize()...   - int
+...this.textLength()...  - int
+...this.images()...      - String
+...this.isimage()...     - boolean
+
+Methods for Fields
+...this.filename.length()...    - Image
+...this.filetype.length()...    - Image
+ */
+/** represents an Image, which contains a file-name,
+// size, and file-type that is contained in a WebPage
+class Image implements Item {
+    String filename;
+    int size;
+    String filetype;
+    
+    Image(String filename, int size, String filetype) {
+        this.filename = filename;
+        this.size = size;
+        this.filetype = filetype;
+    }
+    //totalImageSize() finds the total image size of the ILoItem
+    public int totalImageSize() {
+        return this.size;
+    }
+    //textLength() finds the total length 
+    // of the filename and filetype
+    public int textLength() {
+        return this.filename.length() + this.filetype.length();
+    }
+    //images() finds the filename of the image
+    public String images() {
+        return this.filename + "." + this.filetype;
+    }
+  //isimage() tells that this is an image
+    public boolean isimage() {
+        return true;
+    }
+}

@@ -1,0 +1,10 @@
+import junit.framework.TestCase;
+
+/** represents the tests for the WebPages 
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public class WebPageTest extends TestCase {
+
+}

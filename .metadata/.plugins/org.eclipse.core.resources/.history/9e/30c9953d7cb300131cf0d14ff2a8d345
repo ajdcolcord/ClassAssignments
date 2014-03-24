@@ -1,0 +1,45 @@
+/*
+TEMPLATE
+Fields:
+... this.contents... - String
+Methods:
+...this.totalimageSize()...        - int
+...this.textLength()...       - int
+...this.images()...           - String
+...this.isimage()...          - boolean
+Methods for Fields
+...this.contents.length()...     - Text
+ */
+
+/** definition for Text, which contains its contents that implements
+ * the methods contained in Item
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public class Text implements Item {
+    String contents;
+    
+    Text(String contents) {
+        this.contents = contents;
+    }
+    
+    /** finds the total image size of the ILoItem
+     * 
+     * @return int the total image size
+     */
+    public int totalImageSize() {
+        return 0;
+    }
+    //textLength() finds the total length of the contents
+    public int textLength() {
+        return this.contents.length();
+    }
+    //images() finds the filename of the image
+    public String images() {
+        return "";
+    }
+    //isimage() tells that this is not an image
+    public boolean isimage() {
+        return false;
+    }
+}

@@ -1,0 +1,49 @@
+/*
+Template Link
+Fields:
+... this.name...       - String
+... this.page...       - WP
+
+Methods:
+...this.totalImageSize()...   - int
+...this.textLength()...  - int
+...this.images()...      - String
+...this.isimage()...     - boolean
+
+Methods for Fields
+...this.page.totalImageSize()...  - WP
+...this.page.images()...          - WP
+...this.name.length()...          - String
+ */
+
+/** represents a Link, which contains its name, and
+ * a WebPage that it directs to
+ * 
+ * @author Austin Colcord - ajdcolcord
+ */
+class Link implements Item {
+    String name;
+    WebPage page;
+    
+    Link(String name, WebPage page) {
+        this.name = name;
+        this.page = page;
+    }
+    //totalImageSize() finds the total image size of the ILoItem
+    public int totalImageSize() {
+        return this.page.totalImageSize();
+    }
+    //textLength() finds the total length of the web page name
+    public int textLength() {
+        return this.name.length() + this.page.textLength();
+    }
+    //images() produces one String that contains names of all images
+    // in contained in the page
+    public String images() {
+        return this.page.images();
+    }
+  //isimage() tells that this is not an image
+    public boolean isimage() {
+        return false;
+    }
+}

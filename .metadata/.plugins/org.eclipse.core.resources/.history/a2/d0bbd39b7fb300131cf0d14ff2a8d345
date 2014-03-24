@@ -1,0 +1,64 @@
+/*
+Template Image
+Fields:
+... this.item...   - Item
+... this.iloi...   - ILoItem
+
+Methods:
+...this.totalImageSize()...   - int
+...this.textLength()...  - int
+...this.isMtLoItem()...  - boolean
+...this.images()...      - String
+...this.isimage()...     - boolean
+
+Methods for Fields
+...this.item.textlength()...  - Image
+...this.item.totalImageSize()...   - Image
+...this.iloi.textlength()...  - ILoItem
+...this.iloi.totalImageSize()...   - ILoItem
+...this.item.isMtLoItem()...  - ILoItem
+ */
+/** represents the non-empty list of items
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public class ConsLoItem implements ILoItem {
+    Item item;
+    ILoItem iloi;
+    
+    ConsLoItem(Item item, ILoItem iloi) {
+        this.item = item;
+        this.iloi = iloi;
+    }
+    //totalImageSize() finds the total image size of the ILoItem
+    public int totalImageSize() {
+        return this.item.totalImageSize() + this.iloi.totalImageSize();
+    }
+    //textLength() finds the total length of all of the strings in
+    // every item
+    public int textLength() {
+        return this.item.textLength() + this.iloi.textLength();
+    }
+    //images() creates a String out of the names of the images
+    // in the ILoItem
+    public String images() {
+        if (this.iloi.isMtLoItem()) {
+            return this.item.images();
+        } 
+        else if (!(this.item.isimage())) { 
+            return this.iloi.images();
+        }
+        else {
+            return this.item.images() + ", " + this.iloi.images();
+        }
+    }
+    //isMtLoItem() tells if the rest of the list is empty
+    public boolean isMtLoItem() {
+        return false;
+    }
+    //isimage() tells if there are images in this list or not
+    public boolean isimage() {
+        return this.item.isimage() || this.iloi.isimage();
+    }
+}

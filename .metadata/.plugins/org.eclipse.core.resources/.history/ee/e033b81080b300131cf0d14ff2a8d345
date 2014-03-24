@@ -1,0 +1,37 @@
+import junit.framework.TestCase;
+
+/** represents the tests for the WebPages 
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public class WebPageTest extends TestCase {
+	Item kevin = new Image("kevin", 400, "png");
+    Item annie = new Image("annie", 230, "jpeg");
+    Item jackie = new Image("jackie", 300, "png");
+    
+    Item text1 = new Text("This is Kevin");
+    Item text2 = new Text("This is Annie");
+    Item text3 = new Text("My friend Jackie");
+    
+  
+    
+    ILoItem listf = new ConsLoItem(jackie, new MtLoItem());
+    ILoItem listg = new ConsLoItem(text3, listf);
+    
+    
+    WP bobsfriends = new WP("bob-friends.org", "Bob's Friends", listg);
+    
+    Item link1 = new Link("Here are Bob's friends", bobsfriends);
+    
+    ILoItem lista = new ConsLoItem(link1, new MtLoItem());
+    ILoItem listb = new ConsLoItem(kevin, lista);
+    ILoItem listc = new ConsLoItem(text1, listb);
+    ILoItem listd = new ConsLoItem(annie, listc);
+    ILoItem liste = new ConsLoItem(text2, listd);
+    ILoItem listempty = new MtLoItem();
+    
+    WP myWP = new WP("myfriends.org", "My Friends", liste);
+    WP emptyWP = new WP("", "", listempty);
+    
+}

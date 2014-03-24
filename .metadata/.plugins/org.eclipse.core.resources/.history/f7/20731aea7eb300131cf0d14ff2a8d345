@@ -1,0 +1,8 @@
+/** represents the interface for a list of items
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public interface ILoItem {
+
+}

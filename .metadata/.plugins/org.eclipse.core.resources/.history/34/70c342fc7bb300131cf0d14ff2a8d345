@@ -1,0 +1,11 @@
+/** represents the interface for an Item of any time that will be
+ * contained in a WebPage
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public interface Item {
+	int totalImageSize();
+    int textLength();
+    String images();
+    boolean isimage();
+}

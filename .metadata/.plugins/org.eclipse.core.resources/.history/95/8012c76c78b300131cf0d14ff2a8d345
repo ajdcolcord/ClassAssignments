@@ -1,0 +1,11 @@
+import junit.framework.TestCase;
+
+
+public class AlgorithmsTests extends TestCase {
+
+	/** test the carMove function in Algorithms */
+	public void testCarMove() {
+		assertEquals(Algorithms.carMove(20, 5, 50), 270); 
+		assertEquals(Algorithms.carMove(10, 3, 60), 190);
+	}
+}

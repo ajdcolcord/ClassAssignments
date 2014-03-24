@@ -1,0 +1,48 @@
+/*
+Template Image
+Methods:
+...this.totalImageSize()...   - int
+...this.textLength()...  - int
+...this.images()...      - String
+...this.isMtLoItem()...  - boolean
+...this.isimage()...     - boolean
+ */
+/** define empty List of Items
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+class MtLoItem implements ILoItem {
+	MtLoItem() {
+		//since this is an empty list, there is no fields or constructor
+	}
+	
+	/** returns the total image size of this item
+	 * 
+	 * @return int the total image size
+	 */
+	public int totalImageSize() {
+		return 0;
+	}
+	
+	/** return the length of the text contained in this item
+	 * 
+	 * @return int the length of the text in this item
+	 */
+	public int textLength() {
+		return 0;
+	}
+	//since there are no Items in an MtLoItem,
+	// there is an empty string for images
+	public String images() {
+		return "";
+	}
+	//isMtLoItem() says that the rest of the list is empty
+	public boolean isMtLoItem() {
+		return true;
+	}
+	//isimage() tells that there are no images in this empty list
+	public boolean isimage() {
+		return false;
+	}
+}
