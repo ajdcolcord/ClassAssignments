@@ -1,3 +1,51 @@
+//CLASS DIAGRAM
+/*
+
+               +-------+
+               | World |
+               +-------+
+                   ^
+                   |
+      +-------------------------+
+      |       FieldWorld        |-------+
+      +-------------------------+       |
+ +----| Player           player |       |
+ | +--| Ball             ball   |       |
+ | |  | int              score  |       |
+ | |  +-------------------------+       |
+ | |  | WorldImage   makeImage()|       |
+ | |  | boolean     caughtBall()|       |
+ | |  | FieldWorld      onTick()|       |
+ | |  | FieldWorld  onKeyEvent()|       |
+ | |  | WorldEnd     worldEnds()|       |
+ | |  +-------------------------+       |      +-------------------+
+ | |                                    +----->|    FWConstants    |
+ | |                                    |      +-------------------+
+ | |                                    |
+ | |  +---------------------------+     |
+ | +->|           Ball            |-----+
+ |    +---------------------------+     |
+ |    | Posn                 posn |     |
+ |    +---------------------------+     |
+ |    | WorldImage    ballImage() |     |
+ |    | Ball           moveDown() |     |
+ |    | boolean     reachedGoal() |     |
+ |    | Ball           moveBall() |     |
+ |    +---------------------------+     |
+ |                                      |
+ |    +---------------------------+     |
+ +--->|         Player            |-----+
+      +---------------------------+
+      | Posn                 posn |
+      +---------------------------+
+      | WorldImage  playerImage() |
+      | Player       onKeyEvent() |
+      +---------------------------+
+
+
+*/
+
+
 /** represents the constants that are used in the FieldWorld
  * 
  * @author Austin Colcord - ajdcolcord

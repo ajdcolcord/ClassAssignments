@@ -1,0 +1,8 @@
+/** represents the player that is controlled that will catch the balls
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public class Player {
+
+}

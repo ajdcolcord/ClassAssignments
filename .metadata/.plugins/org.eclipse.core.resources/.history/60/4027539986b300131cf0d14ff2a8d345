@@ -1,0 +1,46 @@
+/** represents the player that is controlled that will catch the balls
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public class Player {
+    Posn posn;
+
+    Player(Posn posn) {
+        this.posn = posn;
+    }
+
+
+
+    // produce the image for the player
+    public WorldImage playerImage() {
+        return new RectangleImage(this.posn, 30, 15, new Black());
+    }
+
+    // move the player on the key event (left or right)
+    public Player onKeyEvent(String ke) {
+        if (ke.equals("left")) {
+            if (this.posn.x >= 15) {
+                return new Player(
+                        new Posn((this.posn.x - 10), this.posn.y));
+            }
+            else {
+                return this;
+            }
+        }
+        else if (ke.equals("right")) {
+            if (this.posn.x <= (FWConstants.width - 15)) {
+                return new Player(
+                        new Posn((this.posn.x + 10), this.posn.y));
+            }
+            else {
+                return this;
+            }
+        }
+        else {
+            return this;
+        }
+    }
+}
+
+}
