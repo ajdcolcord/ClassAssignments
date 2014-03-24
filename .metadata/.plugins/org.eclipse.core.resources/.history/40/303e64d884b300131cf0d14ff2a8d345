@@ -1,0 +1,17 @@
+/* Template
+Fields:
+...this.posn... - Posn
+Methods:
+...this.ballImage()...   - WorldImage
+...this.moveDown()...    - Ball
+...this.reachedGoal()... - boolean
+...this.moveBall()...    - Ball
+*/
+/** represents the blal that will be caught by the player
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public class Ball implements FWConstants {
+
+}

@@ -1,0 +1,73 @@
+import tester.*;
+
+/* Class Diagram
+
+                       +-------------------------+
+                       |       AFile             |
+                       +-------------------------+
+                       | String      name        |
+                       | String      owner       |
+                       +-------------------------+
+                       | int      downloadTime() |
+                       | String      thisOwner() |
+                       | boolean     sameOwner() |
+                       +-------------------------+
+                                   |
+                                   |
+        +--------------------------+-------------------------+
+        v                          v                         v
+ +--------------+         +-----------------+        +--------------+
+ |  TextFile    |         |    ImageFile    |        |  AudioFile   |
+ +--------------+         +-----------------+        +--------------+
+ | int   length |         | int     width   |        | int    speed |
+ +--------------+         | int     height  |        | int   length |
+ | int   size() |         +-----------------+        +--------------+
+ +--------------+         | int      size() |        | int   size() |
+                          +-----------------+        +--------------+
+ 
+*/
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+//AFILE
+/* Template
+Fields:
+...this.name...  - String
+...this.owner... - String
+Methods:
+...this.size()...         - int
+...this.downloadTime()... - int
+...this.thisOwner()...    - String
+...this.sameOwner()...    - boolean
+ */
+// to represent different files in a computer
+abstract class AFile {
+    String name;
+    String owner;
+    
+    AFile(String name, String owner) {
+        this.name = name;
+        this.owner = owner;
+    }
+
+    // size() computes the size of this file
+    abstract int size();
+
+    // downloadTime() computes the time (in seconds) 
+    // to download this file at the given download rate
+    int downloadTime(int rate) {
+        return this.size() / rate;
+    }
+
+    // thisOwner() returns the owner of the IFile
+    String thisOwner() {
+        return this.owner;
+    }
+
+    // sameOwner() tells if the owner of this 
+    // file the same as the owner of the given file?
+    boolean sameOwner(AFile that) {
+        return (this.owner.equals(that.thisOwner()));
+    }
+}
