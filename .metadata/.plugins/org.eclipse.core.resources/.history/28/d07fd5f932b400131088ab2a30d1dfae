@@ -1,0 +1,73 @@
+import junit.framework.TestCase;
+
+/** represents the JUnit tests for ILoS and all subclasses
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public class StringListTest extends TestCase {
+    String bee = "bee";
+    String cee = "cee";
+    String empty = "";
+    
+    
+    ILoS emptylist = new MtLoS();
+    
+    ILoS meow = new ConsLoS("meow!", this.emptylist);
+    ILoS goes = new ConsLoS("goes ", this.meow);
+    ILoS cat = new ConsLoS("Cat ", this.goes);
+    
+    ILoS lamb = new ConsLoS("lamb.", this.emptylist);
+    ILoS little = new ConsLoS("little ", this.lamb);
+    ILoS a = new ConsLoS("a ", this.little);
+    ILoS had = new ConsLoS("had ", this.a);
+    ILoS mary = new ConsLoS("Mary ", this.had);
+    
+    ILoS lista = new ConsLoS("Cat ",
+            new ConsLoS("goes ", 
+                    new ConsLoS("lamb.", 
+                            new ConsLoS("meow!", this.emptylist))));
+  
+    /** test the combine method */
+    public void testCombine() {
+         assertEquals(this.mary.combine(), "Mary had a little lamb.");
+         assertEquals(this.cat.combine(), "Cat goes meow!");
+    }
+    
+    /** test the compareAlph method */
+    public void testCompareAlph() {
+        assertEquals(this.mary.compareAlph(this.bee), false);
+        assertEquals(this.cat.compareAlph(this.cee), true);
+        assertEquals(this.emptylist.compareAlph(""), true);
+        assertEquals(this.meow.compareAlph(""), true);
+    }
+    
+    /** test the firstList method */
+    public void testFirstList() {
+        assertEquals(this.cat.firstList(), "Cat ");
+        assertEquals(this.emptylist.firstList(), "");
+        assertEquals(this.meow.firstList(), "meow!");
+    }
+    
+    /** test the restList method */
+    public void testRestList() {
+        assertEquals(this.emptylist.restList(), this.emptylist);
+        assertEquals(this.lamb.restList(), this.emptylist);
+        assertEquals(this.a.restList(), this.little);
+    }
+    
+    /** test the isSorted method */
+    public void testIsSorted() {
+        assertEquals(this.cat.isSorted(), true);
+        assertEquals(this.little.isSorted(), false);
+        assertEquals(this.mary.isSorted(), false);
+        assertEquals(this.emptylist.isSorted(), true);
+        assertEquals(this.meow.isSorted(), true);
+    }
+    
+    /** test the merge method */
+    public void testMerge() {
+        assertEquals(this.cat.merge(this.emptylist), this.cat);
+        assertEquals(this.cat.merge(this.lamb), this.lista);
+    }
+}

@@ -1,0 +1,63 @@
+/* Class Diagram
+
+                  +------------------------+
+                  |         ILoS           |
+                  +------------------------+
+                             ^
+                             |
+                             |
+                             |
+           +-----------------+-------------------+
+           |                                     |
+           v                                     v
++------------------------+           +------------------------+
+|        MtLoS           |           |       ConsLoS          |
++------------------------+           +------------------------+
++------------------------+           |String         first    |
+|String     combine()    |           |ILoS           rest     |
+|boolean    compareAlph()|           +------------------------+
+|String     firstList()  |           |String     combine()    |
+|ILoS       restList()   |           |boolean    compareAlph()|
+|boolean    isSorted()   |           |String     firstList()  |
+|ILoS       merge()      |           |ILoS       restList()   |
++------------------------+           |boolean    isSorted()   |
+                                     |ILoS       merge()      |
+                                     +------------------------+
+
+
+*/
+
+/* Template
+Methods:
+...this.combine()...                - String
+...this.compareAlph(String that)... - boolean
+...this.firstList()...              - String
+...this.restList()...               - ILoS
+...this.isSorted()...               - boolean
+...this.merge(ILoS that)...         - ILoS
+ */
+/** to represent a list of Strings
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+interface ILoS {
+    // combine all Strings in this list into one
+    String combine();
+    
+    //compares two items and returns true if this String
+    //comes alphabetically before that
+    boolean compareAlph(String that);
+    
+    //returns the first of the list
+    String firstList();
+    
+    //return the rest of the list
+    ILoS restList();
+    
+    // tell if the list is sorted in alphabetical order
+    boolean isSorted();
+    
+    //merge two lists together in alphabetical order
+    ILoS merge(ILoS that);
+}
