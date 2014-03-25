@@ -1,0 +1,36 @@
+/* Class Diagram
+
+                       +-------------------------+
+                       |       AFile             |
+                       +-------------------------+
+                       | String      name        |
+                       | String      owner       |
+                       +-------------------------+
+                       | int      downloadTime() |
+                       | String      thisOwner() |
+                       | boolean     sameOwner() |
+                       +-------------------------+
+                                   |
+                                   |
+        +--------------------------+-------------------------+
+        v                          v                         v
+ +--------------+         +-----------------+        +--------------+
+ |  TextFile    |         |    ImageFile    |        |  AudioFile   |
+ +--------------+         +-----------------+        +--------------+
+ | int   length |         | int     width   |        | int    speed |
+ +--------------+         | int     height  |        | int   length |
+ | int   size() |         +-----------------+        +--------------+
+ +--------------+         | int      size() |        | int   size() |
+                          +-----------------+        +--------------+
+ 
+*/
+
+/** represents the abstract class for a file that contains two
+ * strings that represent the name and the owner of the file
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public abstract class AFile {
+
+}

@@ -1,0 +1,86 @@
+/* Class Diagram
+
+                       +-------------------------+
+                       |       AFile             |
+                       +-------------------------+
+                       | String      name        |
+                       | String      owner       |
+                       +-------------------------+
+                       | int      downloadTime() |
+                       | String      thisOwner() |
+                       | boolean     sameOwner() |
+                       +-------------------------+
+                                   |
+                                   |
+        +--------------------------+-------------------------+
+        v                          v                         v
+ +--------------+         +-----------------+        +--------------+
+ |  TextFile    |         |    ImageFile    |        |  AudioFile   |
+ +--------------+         +-----------------+        +--------------+
+ | int   length |         | int     width   |        | int    speed |
+ +--------------+         | int     height  |        | int   length |
+ | int   size() |         +-----------------+        +--------------+
+ +--------------+         | int      size() |        | int   size() |
+                          +-----------------+        +--------------+
+
+ */
+
+/* Template
+Fields:
+...this.name...  - String
+...this.owner... - String
+Methods:
+...this.size()...         - int
+...this.downloadTime()... - int
+...this.thisOwner()...    - String
+...this.sameOwner()...    - boolean
+ */
+/** represents the abstract class for a file that contains two
+ * strings that represent the name and the owner of the file
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public abstract class AFile {
+    String name;
+    String owner;
+
+    AFile(String name, String owner) {
+        this.name = name;
+        this.owner = owner;
+    }
+
+    /** computes the size of this file
+     * 
+     * @return int the size of the file
+     */
+    public abstract int size();
+
+    /** computes the time (in seconds) 
+     * to download this file at the given download rate
+     * 
+     * @param rate the rate at which the file can download
+     * @return int the time for a download to occur
+     */
+    public int downloadTime(int rate) {
+        return this.size() / rate;
+    }
+
+    /** returns the owner of the IFile
+     * 
+     * @return String the owner of the file
+     */
+    public String thisOwner() {
+        return this.owner;
+    }
+
+    /** tells if the owner of this 
+     * file the same as the owner of the given file?
+     * 
+     * @param that the file to check
+     * @return boolean true if the owner of this file is the same as that
+     */
+    public boolean sameOwner(AFile that) {
+        return (this.owner.equals(that.thisOwner()));
+    }
+}

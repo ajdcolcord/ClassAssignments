@@ -1,0 +1,10 @@
+import junit.framework.TestCase;
+
+/** represents the JUnit tests for the File classes and methods
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public class FileTests extends TestCase {
+
+}
