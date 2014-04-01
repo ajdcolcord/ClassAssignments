@@ -1,0 +1,11 @@
+import junit.framework.TestCase;
+
+/** represents the tests for the linked list structure and 
+ * it's methods
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public class LinkedListTests extends TestCase {
+
+}

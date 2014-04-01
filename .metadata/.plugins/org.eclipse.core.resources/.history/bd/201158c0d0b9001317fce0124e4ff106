@@ -1,0 +1,99 @@
+import junit.framework.TestCase;
+
+/** represents the tests for the linked list structure and 
+ * it's methods
+ * 
+ * @author Austin Colcord - ajdcolcord
+ *
+ */
+public class LinkedListTests extends TestCase {
+    Sentinel mts;
+    Sentinel s1;
+    Sentinel s2;
+    Sentinel s3;
+
+    Deque mtd;
+    Deque d1;
+    Deque d2;
+    Deque d3;
+
+    Node a;
+    Node abc;
+    Node bcd;
+    Node cde;
+    Node def;
+    Node first;
+    Node second;
+    Node third;
+    Node fourth;
+
+    // reset to these states
+    public void reset() {
+        mts = new Sentinel(null, null);
+        s1 = new Sentinel(null, null);
+        s2 = new Sentinel(null, null);
+        s3 = new Sentinel(null, null);
+
+        mtd = new Deque(this.mts);
+        d1 = new Deque(this.s1);
+        d2 = new Deque(this.s2);
+        d3 = new Deque(this.s3);
+
+        a = new Node("a", null, null);
+        abc = new Node("abc", null, null);
+        bcd = new Node("bcd", null, null);
+        cde = new Node("cde", null, null);
+        def = new Node("def", null, null);
+        first = new Node("first", null, null);
+        second = new Node("second", null, null);
+        third = new Node("third", null, null);
+        fourth = new Node("fourth", null, null);
+
+        //representing an empty list
+        this.mts.next = this.mts;
+        this.mts.prev = this.mts;
+        this.mtd = new Deque(this.mts);
+
+        //representing a list with one item
+        this.s1.next = this.a;
+        this.s1.prev = this.a;
+        this.a.next = this.s1;
+        this.a.prev = this.s1;
+        this.d1 = new Deque(this.s1);
+
+        //representing the list with abc, bcd, cde, def
+        this.s2.next = this.abc;
+        this.s2.prev = this.def;
+        this.abc.next = this.bcd;
+        this.abc.prev = this.s2;
+        this.bcd.next = this.cde;
+        this.bcd.prev = this.abc;
+        this.cde.next = this.def;
+        this.cde.prev = this.bcd;
+        this.def.next = this.s2;
+        this.def.prev = this.cde;
+        this.d2 = new Deque(this.s2);
+
+        // representing another list with four other values
+        this.s3.next = this.first;
+        this.s3.prev = this.fourth;
+        this.first.next = this.second;
+        this.first.prev = this.s3;
+        this.second.next = this.third;
+        this.second.prev = this.first;
+        this.third.next = this.fourth;
+        this.third.prev = this.second;
+        this.fourth.next = this.s3;
+        this.fourth.prev = this.third;
+        this.d3 = new Deque(this.s3);
+    }
+
+    // test the method isSentinel
+    void testIsSentiel(Tester t) {
+        reset();
+        t.checkExpect(this.mts.isSentinel(), true);
+        t.checkExpect(this.a.isSentinel(), false);
+        t.checkExpect(this.abc.isSentinel(), false);
+        t.checkExpect(this.s1.isSentinel(), true);
+    }
+}
