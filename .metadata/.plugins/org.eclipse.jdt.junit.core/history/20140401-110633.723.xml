@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BuddyListTest" project="BuddyList" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="BuddyListTest" time="0.0">
+    <testcase name="testOverlap" classname="BuddyListTest" time="0.0"/>
+    <testcase name="testHasDistantBuddy" classname="BuddyListTest" time="0.0"/>
+    <testcase name="testCountCommonBuddies" classname="BuddyListTest" time="0.0"/>
+    <testcase name="testAppend" classname="BuddyListTest" time="0.0"/>
+    <testcase name="testHasDirectBuddy" classname="BuddyListTest" time="0.0"/>
+    <testcase name="testIsEmpty" classname="BuddyListTest" time="0.0"/>
+  </testsuite>
+</testrun>

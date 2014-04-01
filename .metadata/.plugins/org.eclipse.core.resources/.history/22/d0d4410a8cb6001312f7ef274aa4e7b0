@@ -1,0 +1,124 @@
+import junit.framework.TestCase;
+
+/** represents the tests for the BuddyLists
+ * 
+ * @author Austin Colcord - ajdcolcord
+ * @author Greg Dorshimer
+ *
+ */
+public class BuddyListTest extends TestCase {
+
+    Person ann;
+    Person bob;
+    Person cole;
+    Person dan;
+    Person ed;
+    Person fay;
+    Person gabi;
+    Person hank;
+    Person jan;
+    Person kim;
+    Person len;
+
+    ILoBuddy mt;
+    ILoBuddy l1;
+    ILoBuddy l2;
+    ILoBuddy l3;
+
+
+    /** reset: sets all data to the following case */
+    public void initBuddies() {
+        this.ann = new Person("Ann");
+        this.bob = new Person("Bob");
+        this.cole = new Person("Cole");
+        this.dan = new Person("Dan");
+        this.ed = new Person("Ed");
+        this.fay = new Person("Fay");
+        this.gabi = new Person("Gabi");
+        this.hank = new Person("Hank");
+        this.jan = new Person("Jan");
+        this.kim = new Person("Kim");
+        this.len = new Person("Len");
+
+
+        // adding the proper buddies
+        this.ann.addBuddy(this.bob);
+        this.ann.addBuddy(this.cole);
+        this.bob.addBuddy(this.ann);
+        this.bob.addBuddy(this.ed);
+        this.bob.addBuddy(this.hank);
+        this.cole.addBuddy(this.dan);
+        this.dan.addBuddy(this.cole);
+        this.ed.addBuddy(this.fay);
+        this.fay.addBuddy(this.ed);
+        this.fay.addBuddy(this.gabi);
+        this.gabi.addBuddy(this.ed);
+        this.gabi.addBuddy(this.fay);
+        this.jan.addBuddy(this.kim);
+        this.jan.addBuddy(this.len);
+        this.kim.addBuddy(this.jan);
+        this.kim.addBuddy(this.len);
+        this.len.addBuddy(this.jan);
+        this.len.addBuddy(this.kim);
+
+        // lists of buddies
+        this.mt = new MtLoBuddy();
+        this.l1 = new ConsLoBuddy(this.ann, this.mt);
+        this.l2 = new ConsLoBuddy(this.bob,
+                new ConsLoBuddy(this.dan, this.mt));
+        this.l3 = new ConsLoBuddy(this.ann, new ConsLoBuddy(this.bob,
+                new ConsLoBuddy(this.dan, this.mt)));
+    }
+
+    /** test isEmpty() */
+    public void testIsEmpty() {
+        initBuddies();
+        assertTrue(this.mt.isEmpty());
+        assertFalse(this.l1.isEmpty());
+        assertFalse(this.l2.isEmpty());
+        assertFalse(this.l3.isEmpty());
+    }
+    
+    /** test the append() method */
+    public void testAppend() {
+        initBuddies();
+        assertEquals(this.mt.append(this.l1), this.l1);
+        assertTrue(this.l1.append(this.l2).inList(this.ann));
+        assertTrue(this.l1.append(this.l2).inList(this.bob));
+        assertTrue(this.l1.append(this.l2).inList(this.dan));
+        assertEquals(this.mt.append(this.mt), this.mt);
+        assertTrue(this.l1.append(this.mt).inList(this.ann));
+        assertFalse(this.l1.append(this.mt).inList(this.bob));
+        assertFalse(this.l1.append(this.mt).inList(this.dan));
+    }
+    
+    /** test the overlap() method */
+    public void testOverlap() {
+        initBuddies();
+        assertEquals(this.l1.overlap(this.mt), this.mt);
+        assertEquals(this.l2.overlap(this.l1), this.mt);
+        assertTrue(this.l3.overlap(this.l1).inList(this.ann));
+        assertFalse(this.l3.overlap(this.l1).inList(this.dan));
+        assertTrue(this.l3.overlap(this.l2).inList(this.bob));
+        assertTrue(this.l3.overlap(this.l2).inList(this.dan));
+        assertFalse(this.l3.overlap(this.l2).inList(this.ann));
+    }
+    
+    /** test the hasDirectBuddy method */
+    public void testHasDirectBuddy() {
+        initBuddies();
+        assertTrue(this.ann.hasDirectBuddy(this.bob));
+        assertTrue(this.bob.hasDirectBuddy(this.ed));
+        assertFalse(this.kim.hasDirectBuddy(this.ann));
+        assertFalse(this.hank.hasDirectBuddy(this.ann));
+    }
+    
+    /** test the countCommonBuddies method */
+    public void testCountCommonBuddies() {
+        initBuddies();
+        assertEquals(this.ann.countCommonBuddies(this.dan), 1);
+        assertEquals(this.jan.countCommonBuddies(this.len), 1);
+        assertEquals(this.ann.countCommonBuddies(this.jan), 0);
+        t.checkExpect(this.ann.countCommonBuddies(this.ann), 2);
+    }
+}
